@@ -71,6 +71,7 @@ public class MatrixLibrary {
             for (int j = 0; j < n; j++) {
                 if (i == j) matrix[i][j] = false;
                 if (matrix[i][j]) matrix[j][i] = matrix[i][j];
+                if (matrix[j][i]) matrix[i][j] = matrix[j][i];
             }
         }
 
