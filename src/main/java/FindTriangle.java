@@ -19,8 +19,10 @@ public class FindTriangle {
 
         long[] power = new long[n + 1];
 
-        for(int i = 0; i < n + 1; i++){
-            power[i] = power(i);
+        power[0] = 1;
+
+        for(int i = 1; i < n + 1; i++){
+            power[i] = 2 * power[i - 1];
         }
 
         for(int i = 0; i < n; i++){
@@ -41,40 +43,6 @@ public class FindTriangle {
         }
 
         return false;
-    }
-
-    // Convert to a binary number representation
-    private static BitSet convert(long value) {
-        BitSet bits = new BitSet();
-        int index = 0;
-        while (value != 0L) {
-            if (value % 2L != 0) {
-                bits.set(index);
-            }
-            ++index;
-            value = value >>> 1;
-        }
-        return bits;
-    }
-
-    // Fast exponentiation algorithm in O(b)
-    private static long power(long b){
-
-        if (b == 0)
-            return 1;
-
-        long x = 2;
-        BitSet binary = convert(b);
-        for(int i = binary.length() - 2; i >= 0; i--){
-            if (binary.get(i)){
-                x *= x;
-                x *= 2;
-            }
-            else{
-                x *= x;
-            }
-        }
-        return x;
     }
 
 
